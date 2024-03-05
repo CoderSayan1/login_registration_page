@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" type="text/css"/>
+    <style>
+      .gradient-custom {
+          background: #bdc3c7;  /* fallback for old browsers */
+          background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);  /* Chrome 10-25, Safari 5.1-6 */
+          background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+      }
+  </style>
+</head>
+<body class=" gradient-custom">
+    <div class="container text-center" style="margin-top: 40px;">
+      <h1 style="color: rgb(200, 255, 0);">Welcome <b><span sec:authentication="principal.fullName" class="text-capitalize"></span></b></h1>
+        <div style="text-decoration: underline; color: white; margin-top: 15px;">
+            <h2>List of  all users</h2>
+        </div>
+        <table class="table table-striped" style="margin-top: 5%;">
+            <thead class="table-dark">
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">DOB</th>
+                <th scope="col">Gender</th>
+                <th scope="col">City</th>
+                <th scope="col">State</th>
+                <th scope="col">Address</th>
+              </tr>
+            </thead>
+            <tbody class="table-primary">
+              <tr th:each = "user: ${listUsers}">
+                <td th:text="${user.id}"></td>
+                <td th:text="${user.name}" class="text-capitalize"></td>
+                <td th:text="${user.dateOfBirth}"></td>
+                <td th:text="${user.gender}"></td>
+                <td th:text="${user.city}" class="text-capitalize"></td>
+                <td th:text="${user.state}" class="text-capitalize"></td>
+                <td th:text="${user.address}" class="text-capitalize"></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div>
+            <form th:action="@{/logout}" method="post">
+              <input type="submit" value="Sign out" style="font-size: 20px; padding: 10px; border-radius: 12px; border:none; background-color: aquamarine; font-weight: 600;">
+            </form>
+          </div>
+    </div>
+</body>
+</html>

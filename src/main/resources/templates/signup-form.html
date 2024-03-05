@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration Page</title>
+    <link
+      rel="stylesheet"
+      href="/webjars/bootstrap/css/bootstrap.min.css"
+      type="text/css"
+    />
+    <style>
+      .gradient-custom {
+            background: #bdc3c7;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+        }
+        .gradient-color{
+          background: #00d2ff;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #928DAB, #00d2ff);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #928DAB, #00d2ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+        }
+      .card-registration .select-input.form-control[readonly]:not([disabled]) {
+        font-size: 1rem;
+        line-height: 2.15;
+        padding-left: 0.75em;
+        padding-right: 0.75em;
+      }
+      .card-registration .select-arrow {
+        top: 13px;
+      }
+    </style>
+  </head>
+  <body class="gradient-custom">
+      <section class="vh-100 ">
+        <div class="container py-5 h-100">
+          <div class="row justify-content-center align-items-center h-100 ">
+            <div class="col-12 col-lg-9 col-xl-7 ">
+              <div
+                class="card shadow-2-strong card-registration gradient-color"
+                style="border-radius: 15px; margin-bottom: 20px; border: none;"
+              >
+                <div class="card-body p-4 px-md-5">
+                  <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 text-center text-decoration-underline">Register Here</h3>
+                  <form
+                    th:action="@{/process_register}"
+                    method="post"
+                    th:object="${user}"
+                  >
+                    <div class="row" >
+                      <div class="col-md-6 mb-4">
+                        <div class="form-outline">
+                          <input
+                            type="text"
+                            id="name"
+                            class="form-control form-control-lg"
+                            th:field="*{name}"
+                            required
+                          />
+                          <label style="font-size: 20px;" class="form-label" for="name">Name</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6 mb-4 d-flex align-items-center">
+                        <div class="form-outline datepicker w-100">
+                          <input
+                            type="text"
+                            class="form-control form-control-lg"
+                            id="birthdayDate"
+                            th:field="*{dateOfBirth}"
+                            required
+                          />
+                          <label style="font-size: 20px;" for="birthdayDate" class="form-label"
+                            >Date Of Birth</label
+                          >
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6 mb-4 d-flex align-items-center">
+                        <div class="form-outline datepicker w-100">
+                          <input
+                            type="email"
+                            class="form-control form-control-lg"
+                            id="email"
+                            th:field="*{email}"
+                            required
+                          />
+                          <label style="font-size: 20px;" for="email" class="form-label">Email</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6 mb-4">
+                        <h6 class="mb-2 pb-1" style="font-size: 18px;">Gender:</h6>
+
+                        <div class="form-check form-check-inline">
+                          <input
+                            class="form-check-input"
+                            type="radio"
+                            name="inlineRadioOptions"
+                            id="femaleGender"
+                            value="option1"
+                            th:checked="*{gender}"
+                            required
+                          />
+                          <label style="font-size: 20px;" class="form-check-label" for="femaleGender"
+                            >Female</label
+                          >
+                        </div>
+
+                        <div class="form-check form-check-inline">
+                          <input
+                            class="form-check-input"
+                            type="radio"
+                            name="inlineRadioOptions"
+                            id="maleGender"
+                            value="option2"
+                          />
+                          <label style="font-size: 20px;" class="form-check-label" for="maleGender"
+                            >Male</label
+                          >
+                        </div>
+
+                        <div class="form-check form-check-inline">
+                          <input
+                            class="form-check-input"
+                            type="radio"
+                            name="inlineRadioOptions"
+                            id="otherGender"
+                            value="option3"
+                          />
+                          <label style="font-size: 20px;" class="form-check-label" for="otherGender"
+                            >Other</label
+                          >
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6 mb-4 pb-2">
+                        <div class="form-outline">
+                          <input
+                            type="password"
+                            id="password"
+                            class="form-control form-control-lg"
+                            th:field="*{password}"
+                            required
+                            minlength="6"
+                            maxlength="10"
+                          />
+                          <label style="font-size: 20px;" class="form-label" for="password"
+                            >Password</label
+                          >
+                        </div>
+                      </div>
+                      <div class="col-md-6 mb-4 pb-2">
+                        <div class="form-outline">
+                          <input
+                            type="text"
+                            id="address"
+                            class="form-control form-control-lg"
+                            th:field="*{address}"
+                            required
+                          />
+                          <label style="font-size: 20px;" class="form-label" for="address"
+                            >Address</label
+                          >
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6 mb-4 pb-2">
+                        <div class="form-outline">
+                          <input
+                            type="text"
+                            id="city"
+                            class="form-control form-control-lg"
+                            th:field="*{city}"
+                            required
+                          />
+                          <label style="font-size: 20px;" class="form-label" for="city">City</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6 mb-4 pb-2">
+                        <div class="form-outline">
+                          <input
+                            type="text"
+                            id="state"
+                            class="form-control form-control-lg"
+                            th:field="*{state}"
+                            required
+                          />
+                          <label style="font-size: 20px;" class="form-label" for="state">State</label>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="mt-4 pt-2">
+                      <input
+                        class="btn btn-primary btn-lg"
+                        type="submit"
+                        value="Submit"
+                      />
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Homepage</title>
+    <link
+      rel="stylesheet"
+      href="/webjars/bootstrap/css/bootstrap.min.css"
+      type="text/css"
+    />
+    <style>
+        .gradient-custom {
+            background: #bdc3c7;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+        }
+    </style>
+  </head>
+  <body class="gradient-custom">
+    <div class="container text-center" style="width: 45%; margin-top: 10%;">
+      <div class="card text-white bg-dark" >
+        <div class="card-header">
+          <h1>Welcome to the Home Page!</h1>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <button class="btn btn-primary"><a th:href="@{/users}" style="text-decoration: none; color: white; font-size: 24px;">List of all users</a></button>
+          </li>
+          <li class="list-group-item">
+            <button class="btn btn-info"><a th:href="@{/register}" style="text-decoration: none; color: white; font-size: 24px;">Register</a></button>
+          </li>
+          <li class="list-group-item">
+            <button class="btn btn-success"><a th:href="@{/login}" style="text-decoration: none; color: white; font-size: 24px;">Login</a></button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
